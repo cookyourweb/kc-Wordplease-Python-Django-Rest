@@ -1,6 +1,7 @@
+from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
+
 class Category(models.Model):
 
     name = models.CharField(max_length=50)
@@ -10,13 +11,12 @@ class Category(models.Model):
         """
         Devuelve la representación de un objeto como una string
         """
-        return self.namegit
+        return self.name
 
 
+class Article(models.Model):
 
-class Articulo(models.Model):
-
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     title = models.CharField(max_length=150)
     summary = models.TextField()
@@ -32,10 +32,3 @@ class Articulo(models.Model):
 
     def __str__(self):
         return self.title
-
-
-
-
-
-
-
