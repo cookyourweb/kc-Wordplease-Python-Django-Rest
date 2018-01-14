@@ -17,3 +17,12 @@ def home(request):
     last_articles = Article.objects.all().order_by("-release_date")[:3]
     context = {'articles': last_articles[:5]}
     return render(request, "home.html", context)
+
+def article_detail(request, pk):
+    possible_articles = Article.objects.filter(pk=pk).select_related("category")
+    if len(possible_articles) == 0:
+        return render(request, "404.html", status=404)
+    else:
+        article = possible_articles[0]
+        context = {'article': Article}
+        return render(request, "article_detail.html", context)

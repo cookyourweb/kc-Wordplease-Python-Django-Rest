@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block head_title %} {{ article.title }} {% endblock %}
+
+{% block content %}
+
+    <h1>{{ article.title }}</h1>
+    <img src="{{ article.image }}" alt="{{ article.title }}" title="{{ article.title }}" width="300">
+    <p>{{ article.summary }}</p>
+     <ul>
+        <li>
+            <strong>Blog:</strong> {{ article.blog_name }}
+        </li>
+        <li>
+            <strong>Rating:</strong> {{ article.rating }}
+        </li>
+        <li>
+            <strong>Category:</strong> {{ article.category.name }}
+        </li>
+        <li>
+            <strong>Release date:</strong> {{ article.release_date | date:"d/m/Y" }}
+        </li>
+    </ul>
+
+{% endblock %}
