@@ -1,5 +1,5 @@
-from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.views import View
 
 from users.forms import LoginForm
@@ -23,10 +23,9 @@ class LoginView(View):
                 return redirect(redirect_to)
             else:
                 form.add_error(None, "Usuario incorrecto o inactivo")
-        context = {'form': form}
-        return render(request, "login_form.html", context)
+        return render(request, "login_form.html", {'form': form})
 
 
 def logout(request):
     django_logout(request)
-    return redirect("login_page")
+    return redirect("home_page")

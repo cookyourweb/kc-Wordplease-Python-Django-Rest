@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block head_title %} {{ blog.blog_name }} {% endblock %}
+{% block content %}
+<h1>Página mi blog</h1>
+    <h1>{{ blog.blog_name }} </h1>
+    <h5>{{ blog.blog_description }} </h5>
+    {% include "categories_filter.html" %}
+    <h4>Last entries</h4>
+    {% include "posts_list.html" %}
+    {% include "paginator.html" %}
+{% endblock %}

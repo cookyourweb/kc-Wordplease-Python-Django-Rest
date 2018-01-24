@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block head_title %} Create Post {% endblock %}
+
+{%  block content %}
+
+    <h1>Nuevo Artículo</h1>
+
+    {%  if messages %}
+        {% for message in messages %}
+            {% autoescape off %}
+                <div class="alert alert-success">
+                    {{message}}
+                </div>
+            {% endautoescape %}
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" novalidate enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" >Create post</button>
+    </form>
+    <script>
+        $(function() {
+          $( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+
+        });
+    </script>
+{% endblock %}

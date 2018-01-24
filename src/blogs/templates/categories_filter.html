@@ -1,0 +1,13 @@
+<form method="post" action="/search/?owner={{ owner }}" >
+    <div align="right">
+        Category:
+            {% csrf_token %}
+            <select class="selectpicker" name="categoria" id="categoria" >
+                <option value="0">All</option>
+                {% for cat in categories %}
+                    <option value="{{ cat.id }}">{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+          <button type="submit" class="btn btn-info">Buscar</button>
+    </div>
+</form>

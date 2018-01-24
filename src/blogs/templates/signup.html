@@ -1,9 +1,11 @@
-{% extends "base.html" %}
+{% extends "base.html"  %}
 
-{% block head_title %} Login {% endblock %}
-
+{% block head_title %}
+    Registro
+{% endblock %}
 {% block content %}
-    <h1>Login</h1>
+    <h1>Date de alta y crea un blog </h1>
+
     {%  if messages %}
         {% for message in messages %}
         <div class="alert alert-danger">
@@ -13,9 +15,8 @@
     {% endif %}
     <form method="post" novalidate>
         {% csrf_token %}
-        {{  form.as_p }}
-        <div>
-            <button type="submit">Login</button>
-        </div>
+        {{ formUser.as_p }}
+        {{ formBlog.as_p }}
+        <button  class="btn btn-primary" type="submit">Dar de alta</button>
     </form>
 {% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block head_title %} Listado de Blogs {% endblock %}
+{% block content %}
+    <h1>Blogs publicados</h1>
+    {% for blog in blogs %}
+        <div class="container" >
+            <div class="col-md-12">
+                <h2><a href="/blogs/{{blog.user.username}}">{{blog.blog_name}}</a></h2>
+                <p>{{blog.blog_description}}</p>
+                <span class="badge">Author: {{blog.user.first_name}} {{blog.user.last_name}}</span>
+            </div>
+        </div>
+    {% endfor %}
+    <br/>
+{% endblock %}
